@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Login() {
   return (
-    <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+    <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 dark:bg-gray-700'>
       <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
         <Link href={"/"}>
           <Image
@@ -46,7 +46,7 @@ export default function Login() {
                 Password
               </label>
               <div className='text-sm'>
-                <Link href='/login/forgot' className='font-semibold text-indigo-600 hover:text-indigo-500'>Forgot password?</Link>
+                <Link href='/login/forgot' className='font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-300'>Forgot password?</Link>
               </div>
             </div>
             <div className='mt-2'>
@@ -71,9 +71,9 @@ export default function Login() {
           </div>
         </form>
 
-        <p className='mt-10 text-center text-sm text-gray-500'>
+        <p className='mt-10 text-center text-sm text-gray-500 dark:text-gray-300'>
           Don't have a crypt yet?{" "}
-          <a href='#' className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
+          <a href='/login/register' className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500 dark:text-indigo-300'>
             Register Today
           </a>
         </p>
