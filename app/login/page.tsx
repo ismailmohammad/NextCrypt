@@ -72,7 +72,7 @@ export default function Login() {
         </form>
 
         <p className='mt-10 text-center text-sm text-gray-500 dark:text-gray-300'>
-          Don't have a crypt yet?{" "}
+          {"Don't have a crypt yet? "}
           <a href='/login/register' className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500 dark:text-indigo-300'>
             Register Today
           </a>
