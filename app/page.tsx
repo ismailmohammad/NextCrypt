@@ -54,7 +54,7 @@ export default function Home() {
             {`This is by no means the finality of what I wanted to create and will be something I work on after exam sessions. But for the purpose of the lab, the simplest
           webpage was created as stated in the requirements. The page is using NextJS with Tailwind CSS. Installing it was pretty straightforward via the node package
           manager. The setup conveniently uses TypeScript and Tailwind bundled with it so it cuts out a lot of the grunt work involved. As for actually building it,
-          inspiration was taken from tailwind CSS components. The logo created via GIMP. In terms of challenges, learning how the routing functions. I plan on turning This
+          inspiration was taken from tailwind CSS components. The logo created via GIMP. In terms of learning curve, learning how the file based routing functions. I plan on turning This
           into a full-fledged application in the near future. But that's about it for this lab. Was nice working on these small tasks for the course. Happy Holidays!`}
           </p>
         </div>

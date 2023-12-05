@@ -4,9 +4,10 @@ import { emailSchema } from "@/app/_models/formValidation";
 import { useRouter } from "next/navigation";
 
 export default function VerifyEmail({ params }: { params: { email: string } }) {
+  const router = useRouter();
   const email = decodeURIComponent(params.email);
   if (!email || !emailSchema.safeParse(email).success) {
-    useRouter().replace("/");
+    router.replace("/");
   }
   return (
     <>

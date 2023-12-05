@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const isPublic = ['/','/login', '/login/verify', 'login/register'].includes(path);
+  const isPublic = ['/','/login', '/login/verify', '/login/register'].includes(path);
   console.log("is public", isPublic)
   const token = request.cookies.get('auth_token')?.value || '';
   if(isPublic && token && path !== '/') {

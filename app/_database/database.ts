@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 
+export const certFile = '/tmp/nextcrypt-cert-X509.pem';
+
 export async function connectDB() {
   try {
     mongoose.connect(process.env.MONGODB_URI!, {
       ssl: true,
-      tlsCertificateKeyFile: 'nextcrypt-cert-X509.pem',
+      tlsCertificateKeyFile: certFile,
       authMechanism: "MONGODB-X509",
       authSource: "$external",
       dbName: process.env.MONGODB_DATABASE!
