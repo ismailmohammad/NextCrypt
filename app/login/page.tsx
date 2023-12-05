@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, FormEvent } from "react";
 import toast, { Toaster } from 'react-hot-toast';
+import Spinner from '../../public/loading.svg';
 
 export default function Login() {
   const router = useRouter();
   const [disableLogin, setDisableLogin] = useState<boolean>(true);
+  const [loggingIn, setLoggingIn] = useState<boolean>(false);
   const [formData, setFormData ] = useState({
     email: "",
     password: "",
@@ -32,6 +34,7 @@ export default function Login() {
 
   async function onLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setLoggingIn(true);
     const response = await fetch("/api/login", {
       method: "POST",
       body: new FormData(event.currentTarget),
@@ -45,10 +48,12 @@ export default function Login() {
         //     ...prevErrors,
         //     email, password, confirm
         // }))
+        setLoggingIn(false);
         return;
     }
     const message = await response.json();
     toast.success(message.message);
+    setLoggingIn(false);
     // router.push(`/dash/${formData.email}`);
     router.push(`/dash/`);
   }
@@ -123,9 +128,9 @@ export default function Login() {
           <div>
             <button
               type='submit'
-              className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${disableLogin ? 'bg-slate-500 hover:bg-slate-500' : ''}`}
-              disabled={disableLogin}>
-              Sign in
+              className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${disableLogin || loggingIn ? 'bg-slate-500 hover:bg-slate-500' : ''}`}
+              disabled={disableLogin || loggingIn}>
+              {loggingIn ? <Image src={Spinner} alt="Loading Spinner" className="h-9"/> : "Sign in"}
             </button>
           </div>
         </form>

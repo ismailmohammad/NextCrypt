@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from 'react-hot-toast';
+import Spinner from '../../../public/loading.svg';
 
 export default function Register() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function Register() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setRegistering(true);
     setValidationErrors({});
     const response = await fetch("/api/register", {
       method: "POST",
@@ -43,10 +45,12 @@ export default function Register() {
             ...prevErrors,
             email, password, confirm
         }))
+        setRegistering(false);
         return;
     }
     const message = await response.json();
     toast.success(message.message);
+    setRegistering(false);
     router.push(`/login/verify/${formData.email}`);
   }
 
@@ -169,9 +173,9 @@ export default function Register() {
           <div>
             <button
               type='submit'
-              className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${disableRegister ? 'bg-slate-500 hover:bg-slate-500' : ''}`}
-              disabled={disableRegister}>
-              Register
+              className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${disableRegister || registering ? 'bg-slate-500 hover:bg-slate-500' : ''}`}
+              disabled={disableRegister || registering}>
+              {registering ? <Image src={Spinner} alt="Loading Spinner" className="h-9"/> : "Register"}
             </button>
           </div>
         </form>
