@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import GitHub_Logo from '../public/GitHub_Logo.png';
 
 export default function Home() {
   return (
@@ -40,6 +41,9 @@ export default function Home() {
               zero-knowledge encryption, even we cannot view the secrets stored on our platform. Truly take your secrets
               with you to the beyond.</span>
             </p>
+            <Link href={"https://github.com/ismailmohammad/NextCrypt"} className="flex justify-center items-center">
+              <Image src={GitHub_Logo} alt='GitHub Repo' className='w-40'></Image>
+            </Link>
           </div>
           {/* Logo */}
           <div className='lg:mt-0 lg:col-span-4 lg:flex drop-shadow-lg order-first lg:order-last w-4/5 sm:w-2/5 lg:w-full place-self-center mb-3'>
@@ -51,7 +55,7 @@ export default function Home() {
       <section className='bg-gray-50 dark:bg-gray-800'>
         <div className='max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6'>
           <p className='mb-8 font-light lg:text-xl'>
-            {`This is by no means the finality of what I wanted to create and will be something I work on after exam sessions. But for the purpose of the lab, the simplest
+            {`This is by no means the finality of what I wanted to create and will be something I work on after exam sessions. As of now, you can register a 'crypt' (account) and login to it. But for the purpose of this lab, the simplest
           webpage was created as stated in the requirements. The page is using NextJS with Tailwind CSS. Installing it was pretty straightforward via the node package
           manager. The setup conveniently uses TypeScript and Tailwind bundled with it so it cuts out a lot of the grunt work involved. As for actually building it,
           inspiration was taken from tailwind CSS components. The logo created via GIMP. In terms of learning curve, learning how the file based routing functions. I plan on turning This
